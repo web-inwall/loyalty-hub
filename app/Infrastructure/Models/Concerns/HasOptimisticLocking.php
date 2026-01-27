@@ -41,7 +41,6 @@ trait HasOptimisticLocking
     /**
      * Perform the actual update operation on a model instance.
      *
-     * @param  Builder  $query
      * @return mixed
      */
     protected function performUpdate(Builder $query)
@@ -63,15 +62,15 @@ trait HasOptimisticLocking
             $affected = $query->update($dirty);
 
             if ($affected === 0) {
-                 // Check if the record actually exists (it might have been deleted, or version mismatch)
-                 $exists = $this->newQueryWithoutScopes()->whereKey($this->getKey())->exists();
-                 
-                 if ($exists) {
-                     // If it exists but wasn't updated, it's a version mismatch
-                     throw new StaleModelLockingException("The model has been modified by another process.");
-                 }
+                // Check if the record actually exists (it might have been deleted, or version mismatch)
+                $exists = $this->newQueryWithoutScopes()->whereKey($this->getKey())->exists();
+
+                if ($exists) {
+                    // If it exists but wasn't updated, it's a version mismatch
+                    throw new StaleModelLockingException('The model has been modified by another process.');
+                }
             }
-            
+
             $this->syncChanges();
 
             $this->fireModelEvent('updated', false);

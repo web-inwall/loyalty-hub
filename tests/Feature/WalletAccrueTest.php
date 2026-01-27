@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Domains\Wallet\Models\Wallet;
 use App\Domains\Wallet\Enums\TransactionType;
+use App\Domains\Wallet\Models\Wallet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Cache;
 
 uses(RefreshDatabase::class);
 
@@ -55,7 +54,7 @@ test('POST /api/wallet/accrue handles idempotency', function () {
         'id' => $wallet->id,
         'balance' => 50, // Should be 50, not 100
     ]);
-    
+
     // Ensure only one transaction record created
     expect($wallet->transactions()->count())->toBe(1);
 });
@@ -75,8 +74,8 @@ test('POST /api/wallet/accrue returns 404/422 for non-existent wallet', function
     ];
 
     $response = $this->postJson('/api/wallet/accrue', $payload);
-    
+
     // Based on `exists:wallets,id` validation rule, Laravel typically returns 422
     $response->assertStatus(422)
-             ->assertJsonValidationErrors(['wallet_id']);
+        ->assertJsonValidationErrors(['wallet_id']);
 });
