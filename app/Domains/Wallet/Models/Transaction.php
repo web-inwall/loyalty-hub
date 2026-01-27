@@ -5,14 +5,23 @@ declare(strict_types=1);
 namespace App\Domains\Wallet\Models;
 
 use App\Domains\Wallet\Enums\TransactionType;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Database\Factories\Domains\Wallet\Models\TransactionFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Transaction model for wallet history.
  */
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Transaction extends Model
 {
+    use HasFactory;
+
+    protected static function newFactory()
+    {
+        return TransactionFactory::new();
+    }
+
     public const UPDATED_AT = null;
 
     protected $fillable = [
