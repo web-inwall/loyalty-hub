@@ -7,7 +7,6 @@ namespace App\Domains\Wallet\Actions;
 use App\Domains\Wallet\DTOs\AccruePointsData;
 use App\Domains\Wallet\Enums\TransactionType;
 use App\Domains\Wallet\Exceptions\WalletNotFoundException;
-use App\Domains\Wallet\Models\Transaction;
 use App\Domains\Wallet\Models\Wallet;
 use Illuminate\Support\Facades\DB;
 
