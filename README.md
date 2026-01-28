@@ -1,4 +1,7 @@
 # LoyaltyHub
+![render1769540494921](https://github.com/user-attachments/assets/36498d34-d9bc-4812-aa50-3ac2f7921075)
+![render1769540826188](https://github.com/user-attachments/assets/9d97c07e-c015-4a36-a114-9367373eb83c)
+
 
 [![CI Pipeline](https://github.com/web-inwall/subify/actions/workflows/ci.yml/badge.svg)](https://github.com/web-inwall/loyalty-hub/actions)
 [![PHP Version](https://img.shields.io/badge/PHP-8.4-4169E1.svg?style=flat&logo=php&logoColor=white)](https://php.net)
