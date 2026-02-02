@@ -78,7 +78,8 @@
         ],
         "qa": [
             "@analyse",
-            "@pint"
+            "@pint",
+            "@test"
         ]
     },
     "extra": {
